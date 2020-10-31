@@ -28,6 +28,35 @@ class Solution {
         return dp[n][sum]=count;
         
     }
+    public int targetSum_tab(int nums[] , int tar , int sum ){
+        
+        // DONE NOTHING JUST TRIED TO UNDERSTAND BEHAVIOUR OF DP IN MEMOIZATION
+        // SEE THIS SAMPLE DP FOR [1,1,1,1,1] AND TAR = 3; 
+        //0 0 0 0 0 1 0 0 0 0 0 
+        //0 0 0 0 1 0 1 0 0 0 0 
+        //0 0 0 1 0 2 0 1 0 0 0 
+        //0 0 1 0 3 0 3 0 1 0 0 
+        //0 1 0 4 0 6 0 4 0 1 0 
+        //1 0 5 0 10 0 10 0 5 0 1 
+        
+        int dp[][]= new int[nums.length+1][2*sum+1];
+        dp[0][sum]=1;
+        for(int i=1; i <dp.length ;i++ ){
+            for(int j=0;j<dp[0].length; j++){
+                
+                if( (j-nums[i-1]) >=0 ) 
+                    dp[i][j]+=dp[i-1][j-nums[i-1]];
+                if(j+nums[i-1] < dp[0].length )
+                    dp[i][j]+=dp[i-1][j+nums[i-1]];
+            }
+        }
+     
+        for(int i=0; i<dp.length;i++){
+            for(int ele : dp[i]) System.out.print(ele+  " ");
+            System.out.println();
+        }
+        return dp[dp.length-1][tar];
+    }
     public int findTargetSumWays(int[] nums, int S) {
         
         int sum=0 , n =nums.length;
@@ -38,11 +67,14 @@ class Solution {
         }
         // DP HERE WORKS IN  A WAY SIMILAR TO A NUMBER LINE 
         //  WE ARE CONSIDERING 0
-        int dp[][]= new int[nums.length+1][2*sum+1];
+        //***************** MEMOIZATION 
+//         int dp[][]= new int[nums.length+1][2*sum+1];
         
-        for(int arr[] : dp )
-            Arrays.fill(arr,-1);
-        int ans = targetSum_mem(nums,  S+sum , n , sum , dp); 
-        return ans;
+//         for(int arr[] : dp )
+//             Arrays.fill(arr,-1);
+//         int ans = targetSum_mem(nums,  S+sum , n , sum , dp); 
+//         return ans;
+//         **************TABULATION 
+            return targetSum_tab(nums,S,sum);
     }
 }
