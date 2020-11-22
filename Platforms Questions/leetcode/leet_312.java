@@ -33,9 +33,42 @@ class Solution {
         }
         return dp[lo][hi]= max_coins ;
     }
+    public static int burst_baloons_tab(int arr[] ){
 
-    public int maxCoins(int[] arr) {
-        return burst_baloons_mem(arr,0,arr.length-1,new int[arr.length][arr.length]);
-            // return 0;
+        int n = arr.length;
+        int dp[][]= new int[n][n];
+        for(int gap =0 ; gap<n;gap++){
+
+            for(int i=0 , j= i+gap ;i<n&& j<n;i++,j++){
+                int lval = i-1>=0 ? arr[i-1] :1;
+                int rval = j+1<n ? arr[j+1] :1;
+                 
+                if(gap==0){
+                    dp[i][j]= lval*arr[i]*rval;
+                    continue;
+                }else{
+
+                    int max_coins = Integer.MIN_VALUE;
+                    for(int cut = i; cut <= j ; cut++){
+                        int left =  i >cut-1 ?0 : dp[i][cut-1];
+                        int right = cut+1 > j ?0 : dp[cut+1][j];
+                        int myAns= left+ lval*arr[cut]*rval + right ;
+                        max_coins = Math.max(max_coins , myAns);
+                    }
+                    dp[i][j]=max_coins;
+                }
+            }
+
         }
+
+        // print2d(dp);
+        return dp[0][n-1];
+    }
+    public int maxCoins(int[] arr) {
+        if(arr.length==0)
+                return 0; 
+        // return burst_baloons_mem(arr,0,arr.length-1,new int[arr.length][arr.length]);
+            // return 0;
+        return burst_baloons_tab(arr);    
+    }
 }
