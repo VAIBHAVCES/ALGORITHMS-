@@ -18,3 +18,4 @@
 * But sooner or later I will expand it to competitve programming and contest solutions 
 
 #### ADVICE AND CONSTRUCTIVE CRITICSIMS ARE ALWAYS WELCOME PUT THEM ON https://www.linkedin.com/in/vaibhav-jain-675304169/
+#### IF ANYHOW I LET MY CONTRIBUTION TO LESS THAN 3 QUESTION PER DAY YOU CAN DM ME WITH BEST ABUSE AT 👆
