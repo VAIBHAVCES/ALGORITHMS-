@@ -63,8 +63,6 @@ class Solution {
         return true;
     }
     
-    
-    
     public boolean bfs_soln(int graph[][] ){
         int n = graph.length;
         int vis[]= new int[n];
@@ -79,8 +77,35 @@ class Solution {
         }
         return true;
     }
+    
+    public boolean dfs_bipartite_check(HashSet<Integer>set1 , HashSet<Integer>set2 , int graph[][] , int src){
+        if(set1.contains(src)) return true;
+        if(set2.contains(src))return false;
+        set1.add(src);
+        for(int ele : graph[src]){
+                if(!dfs_bipartite_check(set2,set1,graph,ele)) return false;
+        }
+        return true;
+    }
+    public boolean dfs_soln(int graph[][] ){
+        
+        HashSet<Integer>set1 = new HashSet<>();
+        HashSet<Integer>set2 = new HashSet<>();
+        
+        for(int i=0; i < graph.length;++i){
+            
+            if(!set1.contains(i) && !set2.contains(i)){
+            
+                if(  ! dfs_bipartite_check(set1,set2, graph ,i) )  return false;     
+        
+            }
+        }
+        
+        return true;
+    }
+    
     public boolean isBipartite(int[][] graph) {
-       return bfs_soln(graph);
-       
+       // return bfs_soln(graph);
+       return dfs_soln(graph);
     }
 }
