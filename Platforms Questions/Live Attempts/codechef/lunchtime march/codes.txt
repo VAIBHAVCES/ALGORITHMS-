@@ -1,0 +1,26 @@
+    import java.util.*;
+import java.io.*;
+
+class Codechef{
+
+    public static void main(String[] args) throws Exception{
+    
+            BufferedReader bf = new BufferedReader (new InputStreamReader(System.in));
+            int tc  = Integer.parseInt(bf.readLine());
+            while(tc-- > 0 ){
+                long ans =  0 ; 
+                String line[]= bf.readLine().split(" " );
+                long n =  Long.parseLong(line[0]);
+                long x =  Long.parseLong(line[1]);
+                while(n-- > 0){
+                    line= bf.readLine().split(" " );
+                    long si =  Long.parseLong(line[0]);
+                    long ri =  Long.parseLong(line[1]);
+                    if(si <= x && ri > ans) ans = ri;
+                }
+                System.out.println(ans);
+
+            }
+    }
+
+}

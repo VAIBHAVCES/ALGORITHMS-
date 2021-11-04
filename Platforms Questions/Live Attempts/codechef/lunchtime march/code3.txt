@@ -1,0 +1,35 @@
+import java.util.*;
+import java.io.*;
+
+class Codechef{
+
+    public static double log2(int N ,int base )
+    {
+  
+        // calculate log2 N indirectly
+        // using log() method
+        double result = (int)(Math.log(N) / Math.log(base));
+  
+        return result;
+    }
+    public static void main(String[] args) throws Exception{
+    
+            BufferedReader bf = new BufferedReader (new InputStreamReader(System.in));
+            int tc  = Integer.parseInt(bf.readLine());
+            while(tc-- > 0 ){
+                String line[]= bf.readLine().split(" " );
+                
+                long  u= Long.parseLong(line[0]);
+                long  v= Long.parseLong(line[1]);
+                long  a= Long.parseLong(line[2]);
+                long  s= Long.parseLong(line[3]);
+
+                long rhs = u*u -2 *a *s;
+                long lhs = v*v;
+                if(v*v >= rhs) System.out.println("yes");
+                else System.out.println("no");
+
+            }
+    }
+
+}

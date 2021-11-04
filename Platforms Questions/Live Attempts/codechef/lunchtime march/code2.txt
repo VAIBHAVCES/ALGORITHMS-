@@ -1,0 +1,44 @@
+import java.util.*;
+import java.io.*;
+
+class Codechef{
+
+    public static double log2(int N ,int base )
+    {
+  
+        // calculate log2 N indirectly
+        // using log() method
+        double result = (int)(Math.log(N) / Math.log(base));
+  
+        return result;
+    }
+    public static void main(String[] args) throws Exception{
+    
+            BufferedReader bf = new BufferedReader (new InputStreamReader(System.in));
+            int tc  = Integer.parseInt(bf.readLine());
+            while(tc-- > 0 ){
+                String line[]= bf.readLine().split(" " );
+                long evens = 0 , odds = 0 , maxsf = 0 ;
+                long n =  Long.parseLong(line[0]);
+                line= bf.readLine().split(" " );
+                int i =0 ;
+                long ns = n;
+                while(ns-- > 0){
+                    long si =  Long.parseLong(line[i++]);
+                    if(si %2 ==0  )evens++;
+                    else maxsf = Math.max(maxsf , si );
+                }
+                odds = n- evens ;
+                // System.out.println("evens: "+evens+ " odds: "+odds+" , "+n);
+                if(odds %2 ==0 ) System.out.println(0);
+                else {
+                    if(maxsf <=2 ){
+                        System.out.println(-1);
+                    }else System.out.println(1);
+                }
+
+
+            }
+    }
+
+}

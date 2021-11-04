@@ -1,0 +1,42 @@
+2 : false
+3 : false
+4 : true
+5 : false
+6 : true
+7 : false
+8 : true
+9 : true
+10 : true
+5 : false
+6 : true
+7 : false
+8 : true
+9 : true
+10 : true
+11 : false
+12 : true
+34 : true
+35 : true
+36 : true
+37 : false
+38 : true
+39 : true
+40 : true
+41 : false
+42 : true
+43 : false
+57 : true
+58 : false
+59 : true
+60 : true
+61 : true
+62 : false
+63 : true
+[2, 3]
+8
+[2, 3]
+7
+[2, 3, 5]
+9
+[2, 3, 5, 7]
+6
