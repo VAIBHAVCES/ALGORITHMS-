@@ -1,10 +1,7 @@
-    // short keys:
-    // println()- pln
-    // 
 
     import java.util.*;
     import java.io.*; 
-     class CodeChef{
+     class B1606{
         
         //SOLUTION BEGIN
         long mod = 1000000000+7;
@@ -12,31 +9,21 @@
         
         void solve(int TC, int TTC) throws Exception{
             
-
-            int x = ni();
-            int y = ni();
-            String ip = nln();
-            // pn("len "+ip.length());
-            ip+="0";
-            int ones = 0 , j = 0 , ans=0 , maxing=0 , i =0;
-            while(j<30){
-                char ch = ip.charAt(j);
-                ones += (int)(ch-'0');
-                // pn(j+" , "+ i);
-                if(ch=='0'){
-                    maxing  = Math.max(maxing , (int)Math.abs(j-i));
-                    j++;
-                    i=j;
-
-                }else if(ch=='1'){
-                    j++;
-                }
-    
-            }
-            maxing  = Math.max(maxing , j-i);
-            // pn("max window = :" +maxing+" with :"+i+" "+j);
-            ans = x*ones + maxing*y;
-            pn(ans); 
+              
+               double n = nd();
+               double k = nd();
+               long hours =0;
+               if(n<=k){
+                    hours+= (long)Math.ceil(Math.log(k)/ Math.log((double)2));
+               }else if(k==1){
+                   hours=(long)n-1;
+               }else{
+                double temp = Math.ceil(Math.log(k)/ Math.log((double)2));
+                double val = Math.ceil( (n-temp)/(double)k  );
+                hours+=(long)temp;
+                hours+=(long)val;
+               }
+               pn(hours);
         }
         //SOLUTION END
         void hold(boolean b)throws Exception{if(!b)throw new Exception("Hold right there, Sparky!");}
@@ -47,6 +34,7 @@
             in = new FastReader();
             out = new PrintWriter(System.out);
             int T = (multipleTC)?ni():1;
+            // pn();
             pre();for(int t = 1; t<= T; t++)solve(t,T);
             out.flush();
             out.close();
@@ -65,7 +53,7 @@
             }
         }
         public static void main(String[] args) throws Exception{
-            new CodeChef().run();
+            new B1606().run();
         }
         int bit(long n){return (n==0)?0:(1+bit(n&(n-1)));}
         void p(Object o){out.print(o);}

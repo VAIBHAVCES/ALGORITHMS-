@@ -25,44 +25,23 @@
 
         }
         void solve(int TC, int TTC) throws Exception{
-            int low = ni();
-            int hi = ni();
-            // pn("----------------------"+TC);
-            ArrayList<Integer>primes = getPrimes(hi);
-            // pn(primes);
-            boolean sieve[] = new boolean[hi-low+1];
-            for(int i : primes  ){
-                
-                    for(int j=Math.max(i*i,(low-i+1)/(i*i));j<=hi;j+=i){
-                        if(j>=low&&j<=hi){
-                            // p("--"+j);
-                     
-                     
-                            sieve[j-low]=true;
-                           
-                     
-                        }
-                    }
-                
-            }
-            // String ansi ="\n";
-            // for(int x=0;x<sieve.length;x++){
-            //     ansi+=(x+low)+" : "+sieve[x]+" ,\n";
-            // }
-            // pn(ansi);
-            int ans = hi-low;
-            
-            for(int i=2;i<sieve.length;i++){
-                
-                if(!sieve[i]){
-                    ans--;
-                    // pn(ans+"-");
-                }
-            }
-            pn(ans);
+            int n = ni();
+            String str = nln();
+            char prev = 'W';
+            int W =0 , B=0;
+            for(int i=0;i<str.length();i++){
 
-           
-                
+                char ch = str.charAt(i);
+                if(ch=='W')W++;
+                else B++;
+                while(i<str.length()&&str.charAt(i)==ch){
+                    i++;
+                }
+                i--;
+
+            }
+            // pn("W: "+W+" B:"+B);
+            pn(Math.min(W,B));
             
         }
         //SOLUTION END

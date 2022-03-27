@@ -9,14 +9,42 @@
         //SOLUTION BEGIN
         long mod = 1000000000+7;
         void pre() throws Exception{}
-        
-        void solve(int TC, int TTC) throws Exception{
-            
+        ArrayList<Integer> getPrimes(int n ){
+            int num = (int)Math.sqrt(n);
+            ArrayList<Integer>ans = new ArrayList<>();
+            boolean sieve[] = new boolean[num+1];
+            for(int  i=2;i<=num;i++){
+                if(!sieve[i]){
+                    ans.add(i);
+                    for(int j=i*i;j<=num;j+=i){
+                        sieve[j]=true;
+                    }
+                }
+            }
+            return ans;
 
-                long n = nl();
-               long x = nl();
-               long p = nl();
-               pn(4*x-n>=p?"PASS":"FAIL");
+        }
+        void solve(int TC, int TTC) throws Exception{
+            long n = nl();
+            long rem[] = new long[3];
+            for(long i=0;i<n;i++){
+                long inp = nl();
+                rem[(int)(inp%3)]++;
+            }
+            long ans = 0 ; 
+            // pn(rem[0]+" , "+rem[1]+" , "+rem[2]);
+            long pair12  = Math.min(rem[1],rem[2]);
+            rem[1]-=pair12;
+            rem[2]-=pair12;
+            if(rem[1]%3!=0 || rem[2]%3!=0){
+                    pn(-1);
+                    return;
+            }else{
+                ans+=pair12 + (rem[1]/3)*2 + (rem[2]/3)*2;
+            }
+            pn(ans);
+
+
             
         }
         //SOLUTION END
